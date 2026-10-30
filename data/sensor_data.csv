@@ -1,18 +1,24 @@
-received_at,device,ts,temp_c,temp_valid,moisture_pct,turbidity_ntu,color_bright,grade,status,yield_pct,price_rp,pump,route
-2026-10-30T00:54:41.740362+00:00,jelantah-scanner-01,49671,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
-2026-10-30T00:55:54.338826+00:00,jelantah-scanner-01,71470,29.0,True,0.3,45.0,50,B,Layak + pretreatment,80,5000,on,Pre-Tank
-2026-10-30T01:03:02.781617+00:00,jelantah-scanner-01,93098,27.0,True,1.5,75.0,10,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
-2026-10-30T01:03:32.476975+00:00,jelantah-scanner-01,104458,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
-2026-10-30T01:04:01.047158+00:00,jelantah-scanner-01,110496,29.0,True,0.3,45.0,50,B,Layak + pretreatment,80,5000,on,Pre-Tank
-2026-10-30T01:04:33.269595+00:00,jelantah-scanner-01,115954,30.0,True,0.05,70.0,50,C,Kualitas rendah,50,2000,off,BLOCKED
-2026-10-30T01:06:11.709834+00:00,jelantah-scanner-01,125429,27.0,True,1.5,75.0,10,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
-2026-10-30T01:06:54.310790+00:00,jelantah-scanner-01,131890,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
-2026-10-30T01:07:44.673329+00:00,jelantah-scanner-01,137369,29.0,True,0.3,45.0,50,B,Layak + pretreatment,80,5000,on,Pre-Tank
-2026-10-30T01:09:25.786623+00:00,jelantah-scanner-01,144128,30.0,True,0.05,70.0,50,C,Kualitas rendah,50,2000,off,BLOCKED
-2026-10-30T01:09:37.228369+00:00,jelantah-scanner-01,155027,27.0,True,1.5,75.0,10,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
-2026-10-30T01:10:32.246392+00:00,jelantah-scanner-01,163168,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
-2026-10-30T01:11:06.779493+00:00,jelantah-scanner-01,171746,29.0,True,0.3,45.0,50,B,Layak + pretreatment,80,5000,on,Pre-Tank
-2026-10-30T01:11:13.182889+00:00,jelantah-scanner-01,178004,30.0,True,0.05,70.0,50,C,Kualitas rendah,50,2000,off,BLOCKED
-2026-10-30T01:11:37.836065+00:00,jelantah-scanner-01,184163,27.0,True,1.5,75.0,10,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
-2026-10-30T01:11:47.685964+00:00,jelantah-scanner-01,192204,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
-2026-10-30T01:35:11.752169+00:00,jelantah-scanner-01,10524,28.0,True,0.05,15.0,85,A,Layak dibeli,92,7000,on,A-Line
+received_at,device,ts,temp_c,temp_valid,moisture_pct,turbidity_ntu,color_bright,iqk,confidence,grade,status,yield_pct,price_rp,pump,route
+2026-10-30T10:59:36.839114+00:00,jelantah-scanner-01,35038,22.0,True,0.0,75.6,100,77.3,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T10:59:58.398451+00:00,jelantah-scanner-01,55074,22.0,True,1.02,75.6,80,66.1,40,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T11:06:01.852604+00:00,jelantah-scanner-01,97872,22.0,True,5.0,75.6,100,52.3,100,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T11:26:02.148722+00:00,jelantah-scanner-01,83441,25.62,True,0.57,75.6,100,74.5,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T11:26:16.456035+00:00,jelantah-scanner-01,95579,25.62,True,0.42,75.6,100,75.2,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T12:53:46.317505+00:00,jelantah-scanner-01,11699,25.62,True,0.0,0.8,100,99.8,98,A,Layak dibeli,92,7000,on,A-Line
+2026-10-30T13:00:07.580966+00:00,jelantah-scanner-01,94081,28.0,True,0.05,15.0,85,,,A,Layak dibeli,92,7000,on,A-Line
+2026-10-30T13:05:00.645823+00:00,jelantah-scanner-01,307343,30.0,True,0.05,70.0,50,,,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T13:05:13.069341+00:00,jelantah-scanner-01,319682,27.0,True,1.5,75.0,10,,,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T13:07:53.721051+00:00,jelantah-scanner-01,389726,28.0,True,0.05,15.0,85,,,A,Layak dibeli,92,7000,on,A-Line
+2026-10-30T13:08:04.211228+00:00,jelantah-scanner-01,400005,29.0,True,0.3,45.0,50,,,B,Layak + pretreatment,80,5000,on,Pre-Tank
+2026-10-30T13:08:13.377511+00:00,jelantah-scanner-01,408764,30.0,True,0.05,70.0,50,,,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T13:08:32.178632+00:00,jelantah-scanner-01,425842,27.0,True,1.5,75.0,10,,,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T13:20:16.724395+00:00,jelantah-scanner-01,32575,25.62,True,0.0,80.0,71,67.2,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T13:31:16.216935+00:00,jelantah-scanner-01,22304,24.31,True,0.0,75.6,0,47.3,40,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T13:31:33.968809+00:00,jelantah-scanner-01,38441,24.31,True,0.0,75.6,100,77.3,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T13:31:52.285365+00:00,jelantah-scanner-01,54697,24.31,True,0.87,0.8,100,95.4,70,B,Layak + pretreatment,80,5000,on,Pre-Tank
+2026-10-30T13:32:01.897420+00:00,jelantah-scanner-01,63893,24.31,True,0.0,0.8,0,69.8,55,C,Kualitas rendah,50,2000,off,BLOCKED
+2026-10-30T13:32:12.541020+00:00,jelantah-scanner-01,73307,24.31,True,0.0,98.9,0,40.3,40,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T13:32:24.251273+00:00,jelantah-scanner-01,83845,24.31,True,0.0,98.9,0,40.3,40,REJECT,Tercampur air / rusak,35,0,off,BLOCKED
+2026-10-30T14:50:56.720208+00:00,jelantah-scanner-01,18082,24.31,True,0.0,0.8,100,99.8,98,A,Layak dibeli,92,7000,on,A-Line
+2026-10-30T14:57:09.715917+00:00,jelantah-scanner-01,11677,24.31,True,0.45,33.7,78,81.1,70,B,Layak + pretreatment,80,5000,on,Pre-Tank
+2026-10-30T15:01:45.669951+00:00,jelantah-scanner-01,27787,24.31,True,0.0,81.1,66,65.5,55,C,Kualitas rendah,50,2000,off,BLOCKED
