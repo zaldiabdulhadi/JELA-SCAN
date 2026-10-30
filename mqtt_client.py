@@ -1,8 +1,19 @@
-
 import csv
 import json
 import os
 from datetime import datetime, timezone
+import time
+
+try:
+    import requests
+    from dotenv import load_dotenv
+    load_dotenv()
+    _TG_TOKEN = os.getenv("TG_TOKEN")
+    _TG_CHAT  = os.getenv("TG_CHAT")
+except Exception:
+    requests = None; _TG_TOKEN = None; _TG_CHAT = None
+
+_last_alert = {"grade": None, "t": 0.0}
 
 import paho.mqtt.client as mqtt
 
@@ -20,7 +31,8 @@ CLIENT_ID = "jelantah-python-subscriber-01"
 # 2. KONFIGURASI PENYIMPANAN DATA
 # ==========================================
 
-DATA_DIR = "data"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 CSV_FILE = os.path.join(DATA_DIR, "sensor_data.csv")
 
 FIELDNAMES = [
@@ -32,6 +44,8 @@ FIELDNAMES = [
     "moisture_pct",
     "turbidity_ntu",
     "color_bright",
+    "iqk",            
+    "confidence",     
     "grade",
     "status",
     "yield_pct",
@@ -66,19 +80,13 @@ def initialize_csv():
 def save_to_csv(data):
     row = {
         "received_at": datetime.now(timezone.utc).isoformat(),
-        **{
-            field: data.get(field)
-            for field in FIELDNAMES
-            if field != "received_at"
-        }
+        **{f: data.get(f) for f in FIELDNAMES if f != "received_at"},
     }
 
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(
-            file,
-            fieldnames=FIELDNAMES
-        )
+        writer = csv.DictWriter(file, fieldnames=FIELDNAMES)
         writer.writerow(row)
+        file.flush()
 
 
 # ==========================================
@@ -131,6 +139,24 @@ def on_message(client, userdata, message):
         # Simpan data
         save_to_csv(data)
 
+        try:
+            is_alert = (data.get("grade") == "REJECT") or (data.get("temp_valid") is False)
+            now = time.time()
+            changed = data.get("grade") != _last_alert["grade"]
+            if is_alert and requests and _TG_TOKEN and _TG_CHAT \
+               and (changed or now - _last_alert["t"] > 300):
+                requests.post(
+                    f"https://api.telegram.org/bot{_TG_TOKEN}/sendMessage",
+                    data={"chat_id": _TG_CHAT,
+                          "text": f"JELANTAH {data.get('grade')} | {data.get('status')} | {data.get('device')}"},
+                    timeout=5,
+                )
+                _last_alert["t"] = now
+            if is_alert:
+                _last_alert["grade"] = data.get("grade")
+        except Exception as e:
+            print("[TG] skip:", e)
+
         # Tampilkan hasil penerimaan
         print("\n" + "=" * 45)
         print("[DATA SENSOR DITERIMA]")
@@ -159,6 +185,7 @@ def on_message(client, userdata, message):
 
 def main():
     initialize_csv()
+    print("[INFO] CSV path:", os.path.abspath(CSV_FILE))
 
     client = mqtt.Client(
         callback_api_version=mqtt.CallbackAPIVersion.VERSION2,
